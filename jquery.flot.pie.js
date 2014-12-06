@@ -403,7 +403,15 @@ More detail and specific examples can be found in the included HTML file.
 					ctx.lineWidth = options.series.pie.stroke.width;
 					currentAngle = startAngle;
 					for (var i = 0; i < slices.length; ++i) {
-						drawSlice(slices[i].angle, options.series.pie.stroke.color, false);
+			                        if(slices[i].label === "Category Missed" && options.series.pie.stroke.mod2){
+			                            var groupAngle = slices[i].angle;
+			                            if(slices[i-1]){
+			                                groupAngle += slices[i-1].angle;
+			                            }
+			                            drawSlice(groupAngle, options.series.pie.stroke.color, false);
+			                        }else{
+			                            drawSlice(slices[i].angle, options.series.pie.stroke.color, false);
+			                        }
 					}
 					ctx.restore();
 				}
