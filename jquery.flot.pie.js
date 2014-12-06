@@ -409,9 +409,11 @@ More detail and specific examples can be found in the included HTML file.
 			                                groupAngle += slices[i-1].angle;
 			                            }
 			                            drawSlice(groupAngle, options.series.pie.stroke.color, false);
-			                        }else{
-			                            drawSlice(slices[i].angle, options.series.pie.stroke.color, false);
 			                        }
+			                        
+                        if(options.series.pie.stroke.mod2 !== true){
+                            drawSlice(slices[i].angle, options.series.pie.stroke.color, false);
+                        }
 					}
 					ctx.restore();
 				}
